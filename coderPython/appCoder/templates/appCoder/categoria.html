@@ -1,0 +1,26 @@
+{% extends "appCoder/main.html" %}
+
+{% load static %}
+
+{% block title %}
+Categorías para la Venta
+{% endblock %}
+
+{% block description %}
+Todas las categorias disponibles para la venta
+{% endblock %}
+
+{% block items %}
+<body>
+    <form action="" method="POST"> {% csrf_token %}
+        
+        <table>
+
+                {{form1.as_table}}
+
+        </table>
+
+        <input type="submit" value="enviar">
+    </form>
+</body>
+{% endblock %}

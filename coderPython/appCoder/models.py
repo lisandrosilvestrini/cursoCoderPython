@@ -5,33 +5,51 @@ from django.db import models
 class Item(models.Model):
 
     title = models.CharField(max_length=100)
-    price = models.FloatField()
-    description = models.CharField(max_length=200)
-    created_date = models.DateTimeField
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    description = models.TextField(null=True, blank=True)
+    created_date = models.DateTimeField(auto_now_add=True)
 
 class User(models.Model):
 
-    name = models.CharField
-    last_name = models.CharField
-    password = models.CharField
-    email = models.EmailField
-    created_date = models.DateTimeField
+    name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    password = models.CharField(max_length=200)
+    email = models.EmailField()
+    created_date = models.DateTimeField()
 
 class Sold_items(models.Model):
 
-    item_id = models.UUIDField
-    units = models.IntegerField
-    sold_date = models.DateTimeField
+    item_id = models.UUIDField()
+    units = models.IntegerField()
+    sold_date = models.DateTimeField()
 
 class Purchased_items(models.Model):
 
-    item_id = models.UUIDField
-    units = models.IntegerField
-    purchase_date = models.DateTimeField
+    item_id = models.UUIDField()
+    units = models.IntegerField()
+    purchase_date = models.DateTimeField()
 
 class Seller(models.Model):
     
-    name = models.CharField
-    score = models.IntegerField
-    reputation = models.CharField
-    address = models.CharField
+    name = models.CharField(max_length=200)
+    score = models.IntegerField()
+    reputation = models.CharField(max_length=200)
+    address = models.CharField(max_length=200)
+
+class Categ(models.Model):
+
+    name = models.CharField(max_length=200)
+    description = models.TextField(null=True, blank=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+
+
+class Categoria(models.Model):
+    pass
+class Tecnologia(models.Model):
+    pass
+class Muebles(models.Model):
+    pass
+class Cocina(models.Model):
+    pass
+class Decoracion(models.Model):
+    pass

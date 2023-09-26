@@ -12,15 +12,51 @@ Todas las categorias disponibles para la venta
 
 {% block items %}
 <body>
+    <br>
+    <p>
+        ACA PODES CREAR CATEGORIAS
+    </p>
     <form action="" method="POST"> {% csrf_token %}
         
         <table>
 
-                {{form1.as_table}}
+                {{form_cat.as_table}}
 
         </table>
 
         <input type="submit" value="enviar">
     </form>
 </body>
+
+<body>
+    <br>
+    <p>
+        ACA PODES BUSCAR CATEGORIAS
+    </p>
+</body>
+
+<body>
+
+    <form action="/appCoder/mostrar_categ/" method="GET">
+
+        <input type="text" name="busqueda_categ" id="busqueda_categ">
+
+        <input type="submit" value="Buscar">
+
+    </form>
+
+</body>
+
+<body>
+
+    <p> Estamos buscando la categoría: {{busqueda_categ}}</p>
+
+    {% for categoria in categorias %}
+        <p>
+            Categoria: {{categoria.name}}
+        </p>
+    {% endfor %}
+
+</body>
+
 {% endblock %}

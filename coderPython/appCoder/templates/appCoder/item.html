@@ -3,5 +3,24 @@
 {% load static %}
 
 {% block title %}
-Tecnología
+Productos a la venta
+{% endblock %}
+
+{% block description %}
+Todos los items a la venta
+{% endblock %}
+
+{% block items %}
+<body>
+    <form action="" method="POST"> {% csrf_token %}
+        
+        <table>
+
+                {{form_item.as_table}}
+
+        </table>
+
+        <input type="submit" value="enviar">
+    </form>
+</body>
 {% endblock %}

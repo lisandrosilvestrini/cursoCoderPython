@@ -10,10 +10,29 @@ def inicio(request):
 
 def item(request):
 
-    item_1 = Item(title="Bicicleta amarilla", price=155.65, description="Bici casi nueva, joyita nunca taxi")
-    item_1.save()
+    if request.method == "POST":
 
-    return HttpResponse(f"El item que creaste es: {item_1.title} {item_1.price} {item_1.description}")
+        formItem = ItemsForm(request.POST)
+
+        if formItem.is_valid():
+
+            info = formItem.cleaned_data
+
+            obj = Item(title=info["title"], description=info["description"], price=info["price"])
+
+            obj.save()         
+
+            return render(request, "appCoder/inicio.html")
+    
+    else:
+        formItem = ItemsForm()
+    
+    return render(request,"appCoder/item.html", {"form_item":formItem})
+
+    # item_1 = Item(title="Bicicleta amarilla", price=155.65, description="Bici casi nueva, joyita nunca taxi")
+    # item_1.save()
+
+    # return HttpResponse(f"El item que creaste es: {item_1.title} {item_1.price} {item_1.description}")
 
 def user(request):
     
@@ -53,24 +72,29 @@ def categoria(request):
     else:
         form = CategoriaForm()
     
-    return render(request,"appCoder/categoria.html", {"form1":form})
+    return render(request,"appCoder/categoria.html", {"form_cat":form})
 
 
 def busquedaCateg(request):
     
-    return render(request,"appCoder/busquedaCateg.html")
+    return render(request,"appCoder/categorias.html")
 
 
-def mostrar(request):
+def mostrarCateg(request):
 
-    if request.GET["categoria"]:
+    if request.GET["busqueda_categ"]:
 
-        categoria = request.GET["categoria"]
-        cat = Categoria.objects.filter(categoria__icontains=categoria)
+        categoria = request.GET["busqueda_categ"]
+        cat = Categoria.objects.filter(id__icontains=categoria)
 
-        return render(request, "appCoder/resultados.html", )
+        return render(request, "appCoder/categorias.html", {"categorias":cat, "busqueda_categ":categoria})
 
-    return HttpResponse(f"Estas buscando la categoría: {request.GET['categoria']}")
+    else:
+
+        respuesta = "No enviaste datos"
+    
+    return HttpResponse(respuesta)
+
 
 def tecnologia(request):
     

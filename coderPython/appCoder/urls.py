@@ -13,4 +13,6 @@ urlpatterns = [
     path("muebles/", muebles, name="Muebles"),
     path("cocina/", cocina, name="Cocina"),
     path("decoracion/", decoracion, name="Decoracion"),
+    path("busqueda_categ/", busquedaCateg, name="busqueda_categ"),
+    path("mostrar_categ/", mostrarCateg, name="mostrar_categ"),
 ]

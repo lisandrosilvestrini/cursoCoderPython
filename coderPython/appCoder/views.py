@@ -77,7 +77,7 @@ def categoria(request):
 
 def busquedaCateg(request):
     
-    return render(request,"appCoder/categorias.html")
+    return render(request,"appCoder/categoria.html")
 
 
 def mostrarCateg(request):
@@ -85,9 +85,10 @@ def mostrarCateg(request):
     if request.GET["busqueda_categ"]:
 
         categoria = request.GET["busqueda_categ"]
-        cat = Categoria.objects.filter(id__icontains=categoria)
-
-        return render(request, "appCoder/categorias.html", {"categorias":cat, "busqueda_categ":categoria})
+        cat = Categ.objects.filter(name__icontains=categoria)
+        print("cat",cat)
+        print("categoria",categoria)
+        return render(request, "appCoder/categoria.html", {"categorias":cat, "busqueda_categ":categoria})
 
     else:
 

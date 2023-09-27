@@ -1,0 +1,31 @@
+{% extends "appCoder/main.html" %}
+
+{% load static %}
+
+{% block title %}
+Eliminar {{item.title}}
+{% endblock %}
+
+{% block description %}
+Eliminar producto
+{% endblock %}
+
+{% block items %}
+
+<body>
+    <br>
+
+    <form action="" method="POST"> {% csrf_token %}
+
+        <p>Estas por eliminar el producto: {{item.title}}</p>
+
+        <input type="submit" value="Eliminar">
+    </form>
+
+    <br>
+    <a type="button" href="{% url 'list_items' %}"> Volver </a>
+    
+
+</body>
+
+{% endblock %}

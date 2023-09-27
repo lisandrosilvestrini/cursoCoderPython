@@ -3,7 +3,7 @@ from appCoder.views import *
 
 urlpatterns = [
     path("", inicio, name="Inicio"),
-    path("items/", item, name="Item"),
+    path("items/", item, name="Items"),
     path("sellers/", seller, name="Seller"),
     path("users/", user, name="User"),
     path("sold_items/", sold_items, name="Sold_items"),
@@ -15,4 +15,11 @@ urlpatterns = [
     path("decoracion/", decoracion, name="Decoracion"),
     path("busqueda_categ/", busquedaCateg, name="busqueda_categ"),
     path("mostrar_categ/", mostrarCateg, name="mostrar_categ"),
+
+    #CRUD items using classes
+    path("items/list/", ListItems.as_view(), name="list_items"),
+    path("items/detail/<int:pk>", DetailItems.as_view(), name="detail_items"),
+    path("items/create/", CreateItems.as_view(), name="create_items"),
+    path("items/update/<int:pk>", UpdateItems.as_view(), name="update_items"),
+    path("items/delete/<int:pk>", DeleteItems.as_view(), name="delete_items"),
 ]

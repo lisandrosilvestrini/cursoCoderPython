@@ -2,6 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from appCoder.forms import *
 from appCoder.models import *
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
 
 # Create your views here.
 def inicio(request):
@@ -113,3 +117,37 @@ def decoracion(request):
     
     return render(request,"appCoder/decoracion.html")
 
+
+def readItems(request):
+
+    items = Item.objects.all()
+
+    context = {"items":items}
+
+    return render(request, "appCoder/readItems.html", context)
+
+class ListItems(ListView):
+
+    model = Item
+
+class DetailItems(DetailView):
+
+    model = Item
+
+class CreateItems(CreateView):
+
+    model = Item
+    success_url = "/appCoder/items/list"
+    fields = ["title","price","description","created_date","condition"]
+
+class UpdateItems(UpdateView):
+
+    model = Item
+    success_url = "/appCoder/items/list"
+    fields = ["title","price","description","created_date","condition"]
+
+class DeleteItems(DeleteView):
+
+    model = Item
+    success_url = "/appCoder/items/list"
+    

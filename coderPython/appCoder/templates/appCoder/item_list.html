@@ -1,0 +1,39 @@
+{% extends "appCoder/main.html" %}
+
+{% load static %}
+
+{% block title %}
+Listado de productos a la venta
+{% endblock %}
+
+{% block description %}
+Administrador de productos
+{% endblock %}
+
+{% block items %}
+<body>
+    <a type="button" href="{% url 'create_items' %}"> Crear producto </a>
+    <br>
+</body>
+
+<body>
+    <br>
+    <p>
+        Listado de productos por título:
+    </p>
+    {% for item in object_list %}
+
+    <p>{{item.title}}
+        
+    <a href="{% url 'detail_items' item.id %}"> Ver </a>
+    |
+    <a href="{% url 'update_items' item.id %}"> Editar </a>
+    |
+    <a href="{% url 'delete_items' item.id %}"> Eliminar </a>
+    </p>
+
+    {% endfor %}
+
+</body>
+
+{% endblock %}

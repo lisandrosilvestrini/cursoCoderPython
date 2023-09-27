@@ -4,10 +4,17 @@ from django.db import models
 
 class Item(models.Model):
 
+    def __str__(self) -> str:
+        return f"id: {self.id}, title: {self.title}"
+    
+    # atributos
     title = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField(null=True, blank=True)
-    # created_date = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateField()
+    condition = models.CharField(max_length=100, default="usado")
+
+
 
 class User(models.Model):
 
@@ -38,6 +45,9 @@ class Seller(models.Model):
 
 class Categ(models.Model):
 
+    def __str__(self) -> str:
+        return f"id: {self.id}, name: {self.name}"
+    
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)

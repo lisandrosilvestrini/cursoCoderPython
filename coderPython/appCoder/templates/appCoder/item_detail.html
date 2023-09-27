@@ -1,0 +1,29 @@
+{% extends "appCoder/main.html" %}
+
+{% load static %}
+
+{% block title %}
+{{item.title}}
+{% endblock %}
+
+{% block description %}
+Detalle de productos
+{% endblock %}
+
+{% block items %}
+
+<body>
+    <br>
+
+    <p>Título: {{item.title}}</p>
+    <p>Precio: $ {{item.price}}</p>
+    <p>Descripción: {{item.description}}</p>
+    <p>Fecha creación: {{item.creation_date}}</p>
+    <p>Condición: {{item.condition}}</p>
+    <br>
+    <a type="button" href="{% url 'list_items' %}"> Volver </a>
+    
+
+</body>
+
+{% endblock %}

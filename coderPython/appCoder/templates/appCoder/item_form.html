@@ -1,0 +1,31 @@
+{% extends "appCoder/main.html" %}
+
+{% load static %}
+
+{% block title %}
+Crear o actualizar productos
+{% endblock %}
+
+{% block description %}
+Detalle de productos
+{% endblock %}
+
+{% block items %}
+
+<body>
+    <br>
+
+    <form action="" method="POST"> {% csrf_token %}
+
+        {{form.as_p}}
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <br>
+    <a type="button" href="{% url 'list_items' %}"> Volver </a>
+    
+
+</body>
+
+{% endblock %}

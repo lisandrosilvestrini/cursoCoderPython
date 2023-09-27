@@ -6,4 +6,4 @@ En la página principal se puede ver una descripción del sitio y luego se puede
 En la sección categorias se pueden crear categorias nuevas y listar las existentes.
 Por otro lado, en la sección items se pueden ver los items y crear nuevos.
 
-### Para buscar una categoría se debe ingresar a la url "http://127.0.0.1:8000/appCoder/mostrar_categ/"
+## Para buscar una categoría se debe ingresar a la url "http://127.0.0.1:8000/appCoder/mostrar_categ/"

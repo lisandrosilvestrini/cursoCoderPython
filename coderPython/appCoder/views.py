@@ -5,9 +5,65 @@ from appCoder.models import *
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
+
+def login_req(request):
+    
+    if request.method == "POST":
+
+        form = AuthenticationForm(request, data = request.POST)
+
+        if form.is_valid():
+
+            usuario = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+
+            user = authenticate(username = usuario, password = password)
+
+            if user:
+
+                login(request, user)
+
+                return render(request, "appCoder/inicio.html", {"mensaje":f"Bienvenido {user}"})
+            
+        else:
+
+            return render(request, "appCoder/inicio.html", {"mensaje":"Datos incorrectos"})
+
+    else:
+
+        form = AuthenticationForm()
+
+    return render(request, "appCoder/login.html",{"formulario":form})
+
+def registro(request):
+
+    if request.method == "POST":
+
+        form = user_signup(request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data["username"]
+            form.save()
+            return render(request, "appCoder/inicio.html",{"mensaje":"Usuario creado con éxito"})
+        
+    else:
+
+        form = user_signup()
+    
+    return render(request, "appCoder/signup.html", {"formulario": form})
+
+
+
+
+
+
 def inicio(request):
 
     return render(request,"appCoder/inicio.html")
@@ -126,27 +182,27 @@ def readItems(request):
 
     return render(request, "appCoder/readItems.html", context)
 
-class ListItems(ListView):
+class ListItems(LoginRequiredMixin, ListView):
 
     model = Item
 
-class DetailItems(DetailView):
+class DetailItems(LoginRequiredMixin, DetailView):
 
     model = Item
 
-class CreateItems(CreateView):
-
-    model = Item
-    success_url = "/appCoder/items/list"
-    fields = ["title","price","description","created_date","condition"]
-
-class UpdateItems(UpdateView):
+class CreateItems(LoginRequiredMixin, CreateView):
 
     model = Item
     success_url = "/appCoder/items/list"
     fields = ["title","price","description","created_date","condition"]
 
-class DeleteItems(DeleteView):
+class UpdateItems(LoginRequiredMixin, UpdateView):
+
+    model = Item
+    success_url = "/appCoder/items/list"
+    fields = ["title","price","description","created_date","condition"]
+
+class DeleteItems(LoginRequiredMixin, DeleteView):
 
     model = Item
     success_url = "/appCoder/items/list"

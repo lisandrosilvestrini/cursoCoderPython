@@ -94,6 +94,45 @@ def item(request):
 
     # return HttpResponse(f"El item que creaste es: {item_1.title} {item_1.price} {item_1.description}")
 
+def update_user(request):
+
+    usuario = request.user
+
+    if request.method == "POST":
+
+        form = updateForm(request.POST)
+
+        if form.is_valid():
+
+            info = form.cleaned_data
+
+            usuario.email = info["email"]
+            usuario.password1 = info["password1"]
+            usuario.first_name = info["first_name"]
+            usuario.last_name = info["last_name"]
+            
+            usuario.save()
+
+            return render(request, "appCoder/inicio.html",{"mensaje":"Usuario actualizado con éxito"})
+    else:
+
+        form = updateForm(initial={
+            "email": usuario.email,
+            "first_name": usuario.first_name,
+            "last_name": usuario.last_name,
+        })
+    
+    return render(request, "appCoder/updateProfile.html", {"formulario":form, "usuario":usuario})
+
+
+
+
+
+def about(request):
+    
+    return render(request,"appCoder/about.html")
+
+
 def user(request):
     
     return render(request,"appCoder/user.html")

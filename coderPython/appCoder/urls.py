@@ -5,6 +5,7 @@ from django.contrib.auth.views import LogoutView
 urlpatterns = [
     path("", inicio, name="Inicio"),
     path("items/", item, name="Items"),
+    path("about/", about, name="about"),
     path("sellers/", seller, name="Seller"),
     path("users/", user, name="User"),
     path("sold_items/", sold_items, name="Sold_items"),
@@ -19,7 +20,7 @@ urlpatterns = [
     path("login/", login_req, name="login"),
     path("signup/", registro, name="signup"),
     path("logout/", LogoutView.as_view(template_name="appCoder/logout.html"), name="logout"),
-
+    path("update_profile/", update_user, name="update_profile"),
 
     #CRUD items using classes
     path("items/list/", ListItems.as_view(), name="list_items"),

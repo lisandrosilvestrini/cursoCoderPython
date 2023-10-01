@@ -22,28 +22,61 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'Inicio' %}">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'Categorias' %}">Categorias</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="#about">About</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'Inicio' %}">Home</a></li> -->
+                        <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'Categorias' %}">Categorias</a></li> -->
+                        <li class="nav-item"><a class="nav-link active" href="{% url 'about' %}">About</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link active dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ver categorías</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'list_items' %}">Todos</a></li>
+                                <!-- <li><a class="dropdown-item" href="{% url 'list_items' %}">Todos</a></li> -->
                                 <li><a class="dropdown-item" href="{% url 'Tecnologia' %}">Tecnología</a></li>
                                 <li><a class="dropdown-item" href="{% url 'Cocina' %}">Cocina</a></li>
                                 <li><a class="dropdown-item" href="{% url 'Muebles' %}">Muebles</a></li>
                                 <li><a class="dropdown-item" href="{% url 'Decoracion' %}">Decoración</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'list_items' %}">Items-CRUD</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Panel admin</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'list_items' %}">Items-CRUD</a></li>
+                                <li><a class="dropdown-item" href="{% url 'Categorias' %}">Categorias</a></li>
+                            </ul>
+                        </li>
+                        <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'list_items' %}">Items-CRUD</a></li> -->
                     </ul>
-                    <form class="d-flex">
+                    <form class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+
+                        {% if request.user.is_authenticated %}
+
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="">user: {{user.first_name}}</a></li>
+
+                        {% with user.avatar_set.first as miAvatar %}
+                        {% if miAvatar %}
+                        <img src="{{miAvatar.imagen.url}}" alt="fail" style="max-width: 30px;">
+
+                        {% endif %}
+                        {% endwith %}
+
+
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'update_profile' %}">Editar Usuario</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'login' %}">Iniciar sesión</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'signup' %}">Registrarse</a></li>
+
+                        {% endif %}
+
+
+
+                    </form>
+                    <!-- <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </nav>

@@ -1,7 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
-
 class Item(models.Model):
 
     def __str__(self) -> str:
@@ -14,6 +15,10 @@ class Item(models.Model):
     created_date = models.DateField()
     condition = models.CharField(max_length=100, default="usado")
 
+class Avatar(models.Model):
+    
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to="avatares", null=True, blank=True)
 
 
 class User(models.Model):

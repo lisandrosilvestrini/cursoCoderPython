@@ -11,6 +11,7 @@ admin.site.register(Muebles)
 admin.site.register(Cocina)
 admin.site.register(Decoracion)
 admin.site.register(Categ)
+admin.site.register(Avatar)
 
 
 

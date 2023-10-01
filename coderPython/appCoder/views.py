@@ -29,27 +29,26 @@ def item(request):
     
     return render(request,"appCoder/item.html", {"form_item":formItem})
 
-    # item_1 = Item(title="Bicicleta amarilla", price=155.65, description="Bici casi nueva, joyita nunca taxi")
-    # item_1.save()
 
-    # return HttpResponse(f"El item que creaste es: {item_1.title} {item_1.price} {item_1.description}")
+def mostrarItems(request):
 
-def user(request):
+    if request.GET["busqueda_items"]:
+
+        item = request.GET["busqueda_items"]
+        items = Item.objects.filter(title__icontains=item)
+        print("items",items)
+        print("item",item)
+        return render(request, "appCoder/item.html", {"items":items, "busqueda_items":item})
+
+    else:
+
+        respuesta = "No enviaste datos"
     
-    return render(request,"appCoder/user.html")
+    return HttpResponse(respuesta)
 
-def seller(request):
+def busquedaItems(request):
     
-    return render(request,"appCoder/seller.html")
-
-def sold_items(request):
-    
-    return render(request,"appCoder/sold_items.html")
-
-def purchased_items(request):
-    
-    return render(request,"appCoder/purchased_items.html")
-
+    return render(request,"appCoder/item.html")
 
 
 

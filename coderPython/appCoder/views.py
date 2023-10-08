@@ -59,10 +59,6 @@ def registro(request):
     
     return render(request, "appCoder/signup.html", {"formulario": form})
 
-
-
-
-
 @login_required
 def inicio(request):
 
@@ -148,24 +144,6 @@ def agregar_avatar(request):
 def about(request):
     
     return render(request,"appCoder/about.html")
-
-
-def user(request):
-    
-    return render(request,"appCoder/user.html")
-
-def seller(request):
-    
-    return render(request,"appCoder/seller.html")
-
-def sold_items(request):
-    
-    return render(request,"appCoder/sold_items.html")
-
-def purchased_items(request):
-    
-    return render(request,"appCoder/purchased_items.html")
-
 
 
 @login_required

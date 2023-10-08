@@ -21,9 +21,11 @@ class Avatar(models.Model):
     imagen = models.ImageField(upload_to="avatares", null=True, blank=True)
 
 
-class User(models.Model):
+class User_mio(models.Model):
 
     name = models.CharField(max_length=200)
+    username = models.CharField(max_length=200,default="")
+    first_name = models.CharField(max_length=200,default="")
     last_name = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
     email = models.EmailField()

@@ -7,3 +7,20 @@ En la sección categorias se pueden crear categorias nuevas y listar las existen
 Por otro lado, en la sección items se pueden ver los items y crear nuevos.
 
 ## Para buscar una categoría se debe ingresar a la url "http://127.0.0.1:8000/appCoder/mostrar_categ/"
+
+*Pendientes del proyecto*
+-- ver tema login (1)
+    -- agregar decoradores para páginas que requieren login
+    -- agregar imagen usuario pentaho
+    -- agregar update de avatar
+- cambiar nombre al repo (10)
+- armar readme (9)
+    - describir modelos
+    - usuarios y pass
+- armar crud de categorias (2)
+- agregar inicio como menú (3)
+- armar buscador de items (5)
+- modificar about me con mis datos (4)
+- armar tests (6)
+- limpieza del código solo dejar lo que se usó (1)
+- armar video (8)

@@ -1,0 +1,23 @@
+{% extends "appCoder/main.html" %}
+
+{% load static %}
+
+{% block title %}
+Venta de Garage por mudanza
+{% endblock %}
+
+{% block description %}
+AVATAR: acá podemos crear tu avatar
+{% endblock %}
+
+{% block items %}
+
+<form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+    {{formulario.as_p}}
+
+    <button type="submit"> Crear</button>
+
+</form>
+
+{% endblock %}

@@ -50,7 +50,7 @@
 
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="">user: {{user.first_name}}</a></li>
 
-                        {% with user.avatar_set.first as miAvatar %}
+                        {% with user.avatar_set.last as miAvatar %}
                         {% if miAvatar %}
                         <img src="{{miAvatar.imagen.url}}" alt="fail" style="max-width: 30px;">
 

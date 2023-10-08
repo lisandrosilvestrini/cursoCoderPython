@@ -21,6 +21,7 @@ urlpatterns = [
     path("signup/", registro, name="signup"),
     path("logout/", LogoutView.as_view(template_name="appCoder/logout.html"), name="logout"),
     path("update_profile/", update_user, name="update_profile"),
+    path("addAvatar/", agregar_avatar, name="addAvatar"),
 
     #CRUD items using classes
     path("items/list/", ListItems.as_view(), name="list_items"),

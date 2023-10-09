@@ -1,0 +1,37 @@
+{% extends "appCoder/main.html" %}
+
+{% load static %}
+
+{% block title %}
+Encontrá cualquier producto por acá
+{% endblock %}
+
+{% block description %}
+Todos los items a la venta en un solo lugar
+{% endblock %}
+
+{% block items %}
+<body>
+
+    <form action="/appCoder/show_items/" method="GET">
+
+        <input type="text" name="search_items" id="search_items">
+
+        <input type="submit" value="Buscar">
+
+    </form>
+
+</body>
+
+<body>
+
+    <p> Estas buscando: {{searched_item}}</p>
+
+    {% for item in items %}
+        <p>
+            Productos: {{item.title}}
+        </p>
+    {% endfor %}
+
+</body>
+{% endblock %}

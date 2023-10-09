@@ -171,6 +171,27 @@ def categoria(request):
     return render(request,"appCoder/categoria.html", {"form_cat":form})
 
 @login_required
+def searchItems(request):
+
+    return render(request,"appCoder/search.html")
+
+@login_required
+def showItems(request):
+    if request.GET["search_items"]:
+
+        item = request.GET["search_items"]
+        i = Item.objects.filter(title__icontains=item)
+        
+        return render(request,"appCoder/search.html", {"items":i, "searched_item":item})
+    
+    else:
+
+        respuesta = "No enviaste datos"
+    
+    return HttpResponse(respuesta)    
+
+
+@login_required
 def busquedaCateg(request):
     
     return render(request,"appCoder/categoria.html")

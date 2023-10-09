@@ -13,6 +13,8 @@ urlpatterns = [
     path("decoracion/", decoracion, name="Decoracion"),
     path("busqueda_categ/", busquedaCateg, name="busqueda_categ"),
     path("mostrar_categ/", mostrarCateg, name="mostrar_categ"),
+    path("search_items/", searchItems, name="search_items"),
+    path("show_items/", showItems, name="show_items"),
     
     #user actions
     path("login/", login_req, name="login"),

@@ -65,3 +65,8 @@ class avatarForm(forms.ModelForm):
 
         model = Avatar
         fields = ["imagen"]
+
+class searchForm(ModelForm):
+    class Meta:
+        model = Item
+        fields = ["title"]

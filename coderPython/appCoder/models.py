@@ -3,6 +3,16 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+
+class Categ(models.Model):
+
+    def __str__(self) -> str:
+        return f"{self.name}"
+    
+    name = models.CharField(max_length=200)
+    description = models.TextField(null=True, blank=True)
+    
+
 class Item(models.Model):
 
     def __str__(self) -> str:
@@ -14,20 +24,13 @@ class Item(models.Model):
     description = models.TextField(null=True, blank=True)
     created_date = models.DateField()
     condition = models.CharField(max_length=100, default="usado")
+    image = models.ImageField(null=True, blank=True, upload_to="imagenesitems")
+    category = models.ForeignKey(Categ, on_delete=models.CASCADE, related_name="items", default=1)
 
 class Avatar(models.Model):
     
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to="avatares", null=True, blank=True)
-
-class Categ(models.Model):
-
-    def __str__(self) -> str:
-        return f"id: {self.id}, name: {self.name}"
-    
-    name = models.CharField(max_length=200)
-    description = models.TextField(null=True, blank=True)
-    created_date = models.DateTimeField(auto_now_add=True)
 
 
 class Categoria(models.Model):

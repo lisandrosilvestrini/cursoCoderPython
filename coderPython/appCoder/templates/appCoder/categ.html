@@ -1,0 +1,26 @@
+{% extends "appCoder/main.html" %}
+
+{% load static %}
+
+{% block title %}
+Categorías
+{% endblock %}
+
+{% block description %}
+Todos las categorías
+{% endblock %}
+
+{% block items %}
+<body>
+    <form action="" method="POST"> {% csrf_token %}
+        
+        <table>
+
+                {{form_categ.as_table}}
+
+        </table>
+
+        <input type="submit" value="enviar">
+    </form>
+</body>
+{% endblock %}

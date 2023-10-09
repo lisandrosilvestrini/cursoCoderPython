@@ -3,11 +3,11 @@
 {% load static %}
 
 {% block title %}
-Crear o actualizar productos
+Eliminar {{categ.name}}
 {% endblock %}
 
 {% block description %}
-Detalle de productos
+Eliminar categoría
 {% endblock %}
 
 {% block items %}
@@ -17,13 +17,13 @@ Detalle de productos
 
     <form action="" method="POST"> {% csrf_token %}
 
-        {{form.as_p}}
+        <p>Estas por eliminar la categoría: {{categ.name}}</p>
 
-        <input type="submit" value="Crear">
+        <input type="submit" value="Eliminar">
     </form>
 
     <br>
-    <a type="button" href="{% url 'list_items' %}"> Volver </a>
+    <a type="button" href="{% url 'list_cat' %}"> Volver </a>
     
 
 </body>

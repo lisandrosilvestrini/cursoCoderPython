@@ -10,17 +10,22 @@ Por otro lado, en la sección items se pueden ver los items y crear nuevos.
 
 *Pendientes del proyecto*
 # ver tema login (DONE!)
-    ~~agregar decoradores para páginas que requieren login~~
-    ~~agregar imagen usuario pentaho~~
-    ~~agregar update de avatar~~
-- cambiar nombre al repo (10)
+# agregar decoradores para páginas que requieren login (DONE!)
+# agregar imagen usuario pentaho (DONE!)
+# agregar update de avatar (DONE!)
+- cambiar nombre al repo (11)
 - armar readme (9)
     - describir modelos
     - usuarios y pass
 - armar crud de categorias (2)
-- agregar inicio como menú (3)
+# agregar inicio como menú (DONE!)
 - armar buscador de items (5)
-- modificar about me con mis datos (4)
-- armar tests (6)
+# modificar about me con mis datos (DONE!)
+- armar tests (8)
 # limpieza del código solo dejar lo que se usó (DONE!)
-- armar video (8)
+- armar video (10)
+
+
+# Problemas a resolver
+- cargar imagenes a la hora de crear items.
+- 

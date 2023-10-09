@@ -1,0 +1,39 @@
+{% extends "appCoder/main.html" %}
+
+{% load static %}
+
+{% block title %}
+Listado de categorías
+{% endblock %}
+
+{% block description %}
+Administrador de categorías
+{% endblock %}
+
+{% block items %}
+<body>
+    <a type="button" href="{% url 'create_cat' %}"> Crear categoría </a>
+    <br>
+</body>
+
+<body>
+    <br>
+    <p>
+        Listado de categorías:
+    </p>
+    {% for categ in object_list %}
+
+    <p>{{categ.name}}
+        
+    <a href="{% url 'detail_cat' categ.id %}"> Ver </a>
+    |
+    <a href="{% url 'update_cat' categ.id %}"> Editar </a>
+    |
+    <a href="{% url 'delete_cat' categ.id %}"> Eliminar </a>
+    </p>
+
+    {% endfor %}
+
+</body>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "appCoder/main.html" %}
+
+{% load static %}
+
+{% block title %}
+{{categ.title}}
+{% endblock %}
+
+{% block description %}
+Detalle de categorías
+{% endblock %}
+
+{% block items %}
+
+<body>
+    <br>
+
+    <p>Nombre: {{categ.name}}</p>
+    <p>Descripción: {{categ.description}}</p>
+    <br>
+    <a type="button" href="{% url 'list_cat' %}"> Volver </a>
+    
+
+</body>
+
+{% endblock %}

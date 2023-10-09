@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from typing import Any
+from django.db.models.query import QuerySet
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from appCoder.forms import *
 from appCoder.models import *
@@ -231,16 +233,48 @@ class CreateItems(LoginRequiredMixin, CreateView):
 
     model = Item
     success_url = "/appCoder/items/list"
-    fields = ["title","price","description","created_date","condition"]
-
+    fields = ["title","price","description","created_date","condition","category","image"]
+    
 class UpdateItems(LoginRequiredMixin, UpdateView):
 
     model = Item
     success_url = "/appCoder/items/list"
-    fields = ["title","price","description","created_date","condition"]
+    fields = ["title","price","description","created_date","condition","category","image"]
 
 class DeleteItems(LoginRequiredMixin, DeleteView):
 
     model = Item
     success_url = "/appCoder/items/list"
+
+
+class ListItemsCocina(LoginRequiredMixin, ListView):
+
+    model = Item
+
+    def get_queryset(self) -> QuerySet[Any]:
+        return Item.objects.filter(category=3)
+
+class ListCat(LoginRequiredMixin, ListView):
+
+    model = Categ
+
+class DetailCat(LoginRequiredMixin, DetailView):
+
+    model = Categ
+
+class CreateCat(LoginRequiredMixin, CreateView):
+
+    model = Categ
+    success_url = "/appCoder/category/list"
+    fields = ["name","description"]
     
+class UpdateCat(LoginRequiredMixin, UpdateView):
+
+    model = Categ
+    success_url = "/appCoder/category/list"
+    fields = ["name","description"]
+
+class DeleteCat(LoginRequiredMixin, DeleteView):
+
+    model = Categ
+    success_url = "/appCoder/category/list"

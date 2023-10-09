@@ -1,17 +1,42 @@
+from typing import Any, Dict, Mapping, Optional, Type, Union
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from appCoder.models import Avatar
+from django.core.files.base import File
+from django.db.models.base import Model
+from django.forms.utils import ErrorList
+from appCoder.models import *
+from django.forms import ModelForm, ValidationError
 
 
 class CategoriaForm(forms.Form):
     name = forms.CharField()
     description = forms.CharField()
 
-class ItemsForm(forms.Form):
-    title = forms.CharField()
-    price = forms.DecimalField()
-    description = forms.CharField()
+# class ItemsForm(forms.Form):
+#     title = forms.CharField()
+#     price = forms.DecimalField()
+#     description = forms.CharField()
+#     image = forms.ImageField()
+#     category = forms.
+
+class ItemsForm(ModelForm):
+
+    class Meta:
+        model = Item
+        fields = ["title","price","description","created_date","condition","image","category"]
+    
+    image = forms.FileField(label="Imagen")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["category"].queryset = Categ.objects.all()
+    
+    def clean_image(self):
+        image = self.cleaned_data["image"]
+        if not image:
+            raise ValidationError("Debes seleccionar una imagen")
+        return image
 
 class user_signup(UserCreationForm):
     email = forms.EmailField()

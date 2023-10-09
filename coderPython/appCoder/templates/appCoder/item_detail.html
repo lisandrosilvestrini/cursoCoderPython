@@ -20,6 +20,10 @@ Detalle de productos
     <p>Descripción: {{item.description}}</p>
     <p>Fecha creación: {{item.creation_date}}</p>
     <p>Condición: {{item.condition}}</p>
+    <p>Categoría: {{item.category}}</p>
+    {% if item.image %}
+    <p><img src="{{item.image.url}}" alt="fail" style="max-width: 300px;"></p>
+    {% endif %}
     <br>
     <a type="button" href="{% url 'list_items' %}"> Volver </a>
     

@@ -56,7 +56,7 @@ Administrador de productos
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'detail_items' item.id %}">Ver Detalle</a></div>
                             </div>
                         </div>
                         <a href="{% url 'detail_items' item.id %}"> Ver </a>|<a href="{% url 'update_items' item.id %}"> Editar </a>|<a href="{% url 'delete_items' item.id %}"> Eliminar </a>

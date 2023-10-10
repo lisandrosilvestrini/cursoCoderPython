@@ -11,11 +11,12 @@ Administrador de productos
 {% endblock %}
 
 {% block items %}
-<body>
-    <a type="button" href="{% url 'create_items' %}"> Crear un producto nuevo </a>
-    <br>
-</body>
-
+{% if user.is_superuser %}
+    <body>
+        <a type="button" href="{% url 'create_items' %}"> Crear un producto nuevo </a>
+        <br>
+    </body>
+{% endif %}
 <body>
     <br>
     <p>

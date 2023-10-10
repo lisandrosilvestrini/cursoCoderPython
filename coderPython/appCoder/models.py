@@ -32,14 +32,3 @@ class Avatar(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to="avatares", null=True, blank=True)
 
-
-# class Categoria(models.Model):
-#     pass
-# class Tecnologia(models.Model):
-#     pass
-# class Muebles(models.Model):
-#     pass
-# class Cocina(models.Model):
-#     pass
-# class Decoracion(models.Model):
-#     pass

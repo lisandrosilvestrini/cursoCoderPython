@@ -61,7 +61,7 @@ def registro(request):
     
     return render(request, "appCoder/signup.html", {"formulario": form})
 
-@login_required
+
 def inicio(request):
 
     return render(request,"appCoder/inicio.html")
@@ -192,48 +192,6 @@ def showItems(request):
 
 
 @login_required
-def busquedaCateg(request):
-    
-    return render(request,"appCoder/categoria.html")
-
-@login_required
-def mostrarCateg(request):
-
-    if request.GET["busqueda_categ"]:
-
-        categoria = request.GET["busqueda_categ"]
-        cat = Categ.objects.filter(name__icontains=categoria)
-        print("cat",cat)
-        print("categoria",categoria)
-        return render(request, "appCoder/categoria.html", {"categorias":cat, "busqueda_categ":categoria})
-
-    else:
-
-        respuesta = "No enviaste datos"
-    
-    return HttpResponse(respuesta)
-
-@login_required
-def tecnologia(request):
-    
-    return render(request,"appCoder/tecnologia.html")
-
-@login_required
-def muebles(request):
-    
-    return render(request,"appCoder/muebles.html")
-
-@login_required
-def cocina(request):
-    
-    return render(request,"appCoder/cocina.html")
-
-@login_required
-def decoracion(request):
-    
-    return render(request,"appCoder/decoracion.html")
-
-@login_required
 def readItems(request):
 
     items = Item.objects.all()
@@ -242,6 +200,8 @@ def readItems(request):
 
     return render(request, "appCoder/readItems.html", context)
 
+
+# CRUD de ITEMS
 class ListItems(LoginRequiredMixin, ListView):
 
     model = Item
@@ -268,6 +228,7 @@ class DeleteItems(LoginRequiredMixin, DeleteView):
     success_url = "/appCoder/items/list"
 
 
+# LISTADO DE ITEMS POR CATEGORIA
 class ListItemsCocina(LoginRequiredMixin, ListView):
 
     model = Item
@@ -275,6 +236,29 @@ class ListItemsCocina(LoginRequiredMixin, ListView):
     def get_queryset(self) -> QuerySet[Any]:
         return Item.objects.filter(category=3)
 
+class ListItemsMuebles(LoginRequiredMixin, ListView):
+
+    model = Item
+
+    def get_queryset(self) -> QuerySet[Any]:
+        return Item.objects.filter(category=4)
+    
+class ListItemsTecnologia(LoginRequiredMixin, ListView):
+
+    model = Item
+
+    def get_queryset(self) -> QuerySet[Any]:
+        return Item.objects.filter(category=5)
+    
+class ListItemsDecoracion(LoginRequiredMixin, ListView):
+
+    model = Item
+
+    def get_queryset(self) -> QuerySet[Any]:
+        return Item.objects.filter(category=6)
+
+
+#CRUD CATEGORIA
 class ListCat(LoginRequiredMixin, ListView):
 
     model = Categ

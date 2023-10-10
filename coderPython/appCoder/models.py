@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Categ(models.Model):
 
     def __str__(self) -> str:
-        return f"{self.name}"
+        return f"{self.id}-{self.name}"
     
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
@@ -33,13 +33,13 @@ class Avatar(models.Model):
     imagen = models.ImageField(upload_to="avatares", null=True, blank=True)
 
 
-class Categoria(models.Model):
-    pass
-class Tecnologia(models.Model):
-    pass
-class Muebles(models.Model):
-    pass
-class Cocina(models.Model):
-    pass
-class Decoracion(models.Model):
-    pass
+# class Categoria(models.Model):
+#     pass
+# class Tecnologia(models.Model):
+#     pass
+# class Muebles(models.Model):
+#     pass
+# class Cocina(models.Model):
+#     pass
+# class Decoracion(models.Model):
+#     pass

@@ -59,7 +59,9 @@ Administrador de productos
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'detail_items' item.id %}">Ver Detalle</a></div>
                             </div>
                         </div>
-                        <a href="{% url 'detail_items' item.id %}"> Ver </a>|<a href="{% url 'update_items' item.id %}"> Editar </a>|<a href="{% url 'delete_items' item.id %}"> Eliminar </a>
+                        {% if user.is_superuser %}
+                            <a href="{% url 'detail_items' item.id %}"> Ver </a>|<a href="{% url 'update_items' item.id %}"> Editar </a>|<a href="{% url 'delete_items' item.id %}"> Eliminar </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -71,24 +73,5 @@ Administrador de productos
     {% endfor %}
 
 </body>
-<!-- <body>
-    <br>
-    <p>
-        Listado de productos por título:
-    </p>
-    {% for item in object_list %}
-
-    <p>{{item.title}}
-        
-    <a href="{% url 'detail_items' item.id %}"> Ver </a>
-    |
-    <a href="{% url 'update_items' item.id %}"> Editar </a>
-    |
-    <a href="{% url 'delete_items' item.id %}"> Eliminar </a>
-    </p>
-
-    {% endfor %}
-
-</body> -->
 
 {% endblock %}

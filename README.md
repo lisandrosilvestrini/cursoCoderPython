@@ -37,9 +37,9 @@ En la sección "Buscar item" podemos hacer una búsqueda por título de item.
     ```
     us: admin
     pass: passw0rd
-    ```
+    
     Común:
-    ```
+    
     us: pentaho
     pass: saiku123
     ```
